@@ -16,7 +16,7 @@ class Zssh {
     /**
      * Archivo de configuración
      */
-    this.config = path.resolve(__dirname, './ssh.json');
+    this.config = path.resolve(__dirname, './ssh2.json');
   }
 
   /**

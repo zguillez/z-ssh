@@ -1,6 +1,6 @@
 {
   "name": "z-ssh",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Tools for ssh connections",
   "author": {
     "name": "Guillermo de la Iglesia",

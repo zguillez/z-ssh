@@ -32,21 +32,20 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">src</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/z-ssh/src/Zfile.js~Zfile.html">Zfile</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/z-ssh/src/ZfileObject.js~ZfileObject.html">ZfileObject</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-zfile">zfile</a></span></span></li>
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">src</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/z-ssh/src/Zssh.js~Zssh.html">Zssh</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-zssh">zssh</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">z-ssh/bin/test.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">#!/usr/local/bin/node
-&apos;use strict&apos;;
-let file = require(&apos;../src/Zfile.js&apos;);
-file.checkIfFolderExists(&apos;.temp&apos;, true);
-let f = file.create(&apos;.temp/test.txt&apos;);
-f.load(&apos;bin/test.js&apos;).then(() =&gt; f.save());
 
+let conn = require(&apos;../src/Zssh&apos;);
+
+conn.prompt();
+
+console.log(&apos;ok&apos;);
 </code></pre>
 
 </div>

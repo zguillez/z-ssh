@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">z-ssh/src/Zssh.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/zguillez/z-ssh" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">src</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/z-ssh/src/Zssh.js~Zssh.html">Zssh</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-zssh">zssh</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">z-ssh/src/Zssh.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
+require(&apos;colors&apos;);
+const path = require(&apos;path&apos;);
+const prompt = require(&apos;prompt&apos;);
+const SSH = require(&apos;node-ssh&apos;);
+const zfile = require(&apos;z-file&apos;);
+const conn = new SSH();
+/**
+ * Class Zssh
+ */
+class Zssh {
+  /**
+   * Constructor
+   */
+  constructor() {
+    /**
+     * Archivo de configuraci&#xF3;n
+     */
+    this.config = path.resolve(__dirname, &apos;./ssh.json&apos;);
+  }
+
+  /**
+   *
+   * Genera una consulta desde la consola: host | username | password | folder
+   */
+  prompt() {
+    zfile.read(this.config).then((data)=&gt; {
+      data = JSON.parse(data);
+      let schema = {
+        properties: {}
+      };
+      if(! data.host) {
+        schema.properties.host = {
+          description: `host`.yellow,
+          pattern: /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/,
+          message: &apos;invalid host format&apos;,
+          default: data.host,
+          required: true,
+        }
+      }
+      if(! data.username) {
+        schema.properties.username = {
+          description: `username`.yellow,
+          pattern: /^\w+$/,
+          message: &apos;invalid username format&apos;,
+          default: data.username,
+          required: true,
+        }
+      }
+      if(! data.password) {
+        schema.properties.password = {
+          description: `password`.yellow,
+          pattern: /^[a-zA-Z0-9]+$/,
+          message: &apos;invalid password format&apos;,
+          hidden: true,
+          required: true,
+        }
+      }
+      if(! data.source) {
+        schema.properties.source = {
+          description: `source`.yellow,
+          pattern: /^\w+$/,
+          message: &apos;invalid source format&apos;,
+          default: data.source,
+          required: true,
+        }
+      }
+      if(! data.output) {
+        schema.properties.output = {
+          description: `output`.yellow,
+          pattern: /^\w+$/,
+          message: &apos;invalid output format&apos;,
+          default: data.output,
+          required: true,
+        }
+      }
+      if(! data.folder) {
+        schema.properties.folder = {
+          description: `folder`.yellow,
+          pattern: /^\w+$/,
+          message: &apos;invalid folder format&apos;,
+          default: data.folder,
+          required: true,
+        }
+      }
+      prompt.start();
+      prompt.get(schema, (err, result) =&gt; {
+        let options = {
+          host: result.host,
+          username: result.username,
+          password: result.password,
+        };
+        /* this.connect(options).then((conn) =&gt; {
+         conn.putDirectory(path.resolve(__dirname, &apos;../../dist&apos;), `/var/www/vhosts/test.linkemann.net/httpdocs/${result.folder}`).then(() =&gt; {
+         console.log(`\nDeployed!\n`.green);
+         conn.dispose();
+         }, (error) =&gt; {
+         console.log(`\nerror: ${error}\n`.red);
+         conn.dispose();
+         });
+         });*/
+      });
+    });
+  }
+
+  checkOptions() {}
+
+  /**
+   *
+   * Crea una conexi&#xF3;n ssh con el servidor.
+   * @param {object} opt - Objeto de configuraci&#xF3;n para la conexi&#xF3;n ssh
+   */
+  connect(opt) {
+    return conn.connect({
+      host: opt.host,
+      username: opt.username,
+      password: opt.password,
+    });
+  }
+}
+/**
+ *
+ * @type {ConnectionSSH}
+ */
+module.exports = new Zssh();
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.2)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

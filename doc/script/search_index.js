@@ -1,20 +1,14 @@
 window.esdocSearchIndex = [
   [
-    "z-ssh/z-ssh/src/zfile.js~zfile",
-    "class/z-ssh/src/Zfile.js~Zfile.html",
-    "<span>Zfile</span> <span class=\"search-result-import-path\">z-ssh/z-ssh/src/Zfile.js</span>",
+    "z-ssh/z-ssh/src/zssh.js~zssh",
+    "class/z-ssh/src/Zssh.js~Zssh.html",
+    "<span>Zssh</span> <span class=\"search-result-import-path\">z-ssh/z-ssh/src/Zssh.js</span>",
     "class"
   ],
   [
-    "z-ssh/z-ssh/src/zfileobject.js~zfileobject",
-    "class/z-ssh/src/ZfileObject.js~ZfileObject.html",
-    "<span>ZfileObject</span> <span class=\"search-result-import-path\">z-ssh/z-ssh/src/ZfileObject.js</span>",
-    "class"
-  ],
-  [
-    "z-ssh/z-ssh/src/zfile.js~zfile",
-    "variable/index.html#static-variable-zfile",
-    "<span>zfile</span> <span class=\"search-result-import-path\">z-ssh/z-ssh/src/Zfile.js</span>",
+    "z-ssh/z-ssh/src/zssh.js~zssh",
+    "variable/index.html#static-variable-zssh",
+    "<span>zssh</span> <span class=\"search-result-import-path\">z-ssh/z-ssh/src/Zssh.js</span>",
     "variable"
   ],
   [
@@ -3930,93 +3924,39 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "z-ssh/src/zfile.js",
-    "file/z-ssh/src/Zfile.js.html",
-    "z-ssh/src/Zfile.js",
+    "z-ssh/src/zssh.js",
+    "file/z-ssh/src/Zssh.js.html",
+    "z-ssh/src/Zssh.js",
     "file"
   ],
   [
-    "z-ssh/src/zfile.js~zfile#checkiffolderexists",
-    "class/z-ssh/src/Zfile.js~Zfile.html#instance-method-checkIfFolderExists",
-    "z-ssh/src/Zfile.js~Zfile#checkIfFolderExists",
+    "z-ssh/src/zssh.js~zssh#checkoptions",
+    "class/z-ssh/src/Zssh.js~Zssh.html#instance-method-checkOptions",
+    "z-ssh/src/Zssh.js~Zssh#checkOptions",
     "method"
   ],
   [
-    "z-ssh/src/zfile.js~zfile#constructor",
-    "class/z-ssh/src/Zfile.js~Zfile.html#instance-constructor-constructor",
-    "z-ssh/src/Zfile.js~Zfile#constructor",
-    "method"
-  ],
-  [
-    "z-ssh/src/zfile.js~zfile#create",
-    "class/z-ssh/src/Zfile.js~Zfile.html#instance-method-create",
-    "z-ssh/src/Zfile.js~Zfile#create",
-    "method"
-  ],
-  [
-    "z-ssh/src/zfile.js~zfile#read",
-    "class/z-ssh/src/Zfile.js~Zfile.html#instance-method-read",
-    "z-ssh/src/Zfile.js~Zfile#read",
-    "method"
-  ],
-  [
-    "z-ssh/src/zfile.js~zfile#write",
-    "class/z-ssh/src/Zfile.js~Zfile.html#instance-method-write",
-    "z-ssh/src/Zfile.js~Zfile#write",
-    "method"
-  ],
-  [
-    "z-ssh/src/zfileobject.js",
-    "file/z-ssh/src/ZfileObject.js.html",
-    "z-ssh/src/ZfileObject.js",
-    "file"
-  ],
-  [
-    "z-ssh/src/zfileobject.js~zfileobject#constructor",
-    "class/z-ssh/src/ZfileObject.js~ZfileObject.html#instance-constructor-constructor",
-    "z-ssh/src/ZfileObject.js~ZfileObject#constructor",
-    "method"
-  ],
-  [
-    "z-ssh/src/zfileobject.js~zfileobject#data",
-    "class/z-ssh/src/ZfileObject.js~ZfileObject.html#instance-member-data",
-    "z-ssh/src/ZfileObject.js~ZfileObject#data",
+    "z-ssh/src/zssh.js~zssh#config",
+    "class/z-ssh/src/Zssh.js~Zssh.html#instance-member-config",
+    "z-ssh/src/Zssh.js~Zssh#config",
     "member"
   ],
   [
-    "z-ssh/src/zfileobject.js~zfileobject#engine",
-    "class/z-ssh/src/ZfileObject.js~ZfileObject.html#instance-member-engine",
-    "z-ssh/src/ZfileObject.js~ZfileObject#engine",
-    "member"
-  ],
-  [
-    "z-ssh/src/zfileobject.js~zfileobject#filetype",
-    "class/z-ssh/src/ZfileObject.js~ZfileObject.html#instance-method-fileType",
-    "z-ssh/src/ZfileObject.js~ZfileObject#fileType",
+    "z-ssh/src/zssh.js~zssh#connect",
+    "class/z-ssh/src/Zssh.js~Zssh.html#instance-method-connect",
+    "z-ssh/src/Zssh.js~Zssh#connect",
     "method"
   ],
   [
-    "z-ssh/src/zfileobject.js~zfileobject#filename",
-    "class/z-ssh/src/ZfileObject.js~ZfileObject.html#instance-member-filename",
-    "z-ssh/src/ZfileObject.js~ZfileObject#filename",
-    "member"
-  ],
-  [
-    "z-ssh/src/zfileobject.js~zfileobject#load",
-    "class/z-ssh/src/ZfileObject.js~ZfileObject.html#instance-method-load",
-    "z-ssh/src/ZfileObject.js~ZfileObject#load",
+    "z-ssh/src/zssh.js~zssh#constructor",
+    "class/z-ssh/src/Zssh.js~Zssh.html#instance-constructor-constructor",
+    "z-ssh/src/Zssh.js~Zssh#constructor",
     "method"
   ],
   [
-    "z-ssh/src/zfileobject.js~zfileobject#path",
-    "class/z-ssh/src/ZfileObject.js~ZfileObject.html#instance-member-path",
-    "z-ssh/src/ZfileObject.js~ZfileObject#path",
-    "member"
-  ],
-  [
-    "z-ssh/src/zfileobject.js~zfileobject#save",
-    "class/z-ssh/src/ZfileObject.js~ZfileObject.html#instance-method-save",
-    "z-ssh/src/ZfileObject.js~ZfileObject#save",
+    "z-ssh/src/zssh.js~zssh#prompt",
+    "class/z-ssh/src/Zssh.js~Zssh.html#instance-method-prompt",
+    "z-ssh/src/Zssh.js~Zssh#prompt",
     "method"
   ]
 ]

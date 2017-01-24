@@ -1,0 +1,17 @@
+{
+  "coverage": "100%",
+  "expectCount": 16,
+  "actualCount": 16,
+  "files": {
+    "z-ssh/src/Zfile.js": {
+      "expectCount": 7,
+      "actualCount": 7,
+      "undocumentLines": []
+    },
+    "z-ssh/src/ZfileObject.js": {
+      "expectCount": 9,
+      "actualCount": 9,
+      "undocumentLines": []
+    }
+  }
+}

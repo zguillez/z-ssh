@@ -1,7 +1,7 @@
 {
   "host": "213.192.239.108",
   "username": "root",
-  "password": "Link3mann2015",
+  "password": "",
   "local": "./bin",
   "remote": "/var/www/vhosts/test.linkemann.net/httpdocs/ssh",
   "files": [

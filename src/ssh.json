@@ -1,8 +1,11 @@
 {
   "host": "213.192.239.108",
   "username": "root",
-  "password": "",
-  "source": "../../dist",
-  "output": "/var/www/vhosts/test.linkemann.net/httpdocs/",
-  "folder": "nodessh"
+  "password": "Link3mann2015",
+  "local": "./bin",
+  "remote": "/var/www/vhosts/test.linkemann.net/httpdocs/ssh",
+  "files": [
+    "index.html",
+    "test.js"
+  ]
 }

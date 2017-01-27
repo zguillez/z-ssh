@@ -1,77 +1,63 @@
-# z-file
+# z-ssh
 Nodejs tools for file streams
 
 ## Install
 ```
-npm i z-file
+npm i z-ssh
 ```
 # Usage
 ```
-const file = require('z-file');
+const conn = require('z-ssh');
 ```
 
-## Read file
+## Configuration file
+By default *./ssh.json* 
 
 ```
-file.read('./src/data.csv').then((data) => {
-  console.log(data);
+conn.config = './config/ssh.json';
+```
+
+```
+{
+  "host": "#SERVER_IP#",
+  "username": "#USERNAME#",
+  "password": "#PASSWORD#",
+  "local": "./mylocalfolder",
+  "remote": "/var/www/vhosts/mydomain.net/httpdocs/myremotefolder"
+}
+```
+   
+If no config file is defined or a params is omitted a prompt will ask for the required param:
+
+```
+prompt: password:
+```
+
+## Upload files  
+
+Upload the local folder to the remote folder:
+
+```
+conn.upload().then(() => {
+  console.log(`Upload is done`.green);
+  conn.close();
+}).catch(err => {
+  console.log(`${err}`.red);
+  conn.close();
 });
 ```
 
-## Write file  
+## Download files
 
-Will create the path folders if not exits.
-
-```
-file.write('./src/data.csv', data).then((data) => {
-  console.log(data);
-});
-```
-
-## Check if folder exists
+Download the remote folder to the local folder:
 
 ```
-console.log( file.folder('./src/data') ); //true or false
-```
-
-### Create folder if not exists
-
-```
-console.log( file.folder('./src/data', true) ); //true
-```
-
-# Use as object
-```
-let f1 = file.create('./data/file.txt');
-f1.data = 'Hello world!;
-f1.save();
-  
-let f2 = file.create();
-f2.load('./data/file.txt').then(() => {
-  f2.data = 'Bye wold!';
-  f2.save()
-});
-```
-
-### Creating new file and load content from existing file
-
-```
-let f = file.create('./src/newfile.csv');
-f.load('./src/oldfile.csv').then(() => {
-  f.save().then(() => {
-    console.log(f.path); //file is saved on './src/newfile.csv'
-  });
-});
-```
-
-## Saving as a new file
-
-```
-let f = file.create();
-f.load('./src/file.csv').then(() => {
-  f.save('./src/newfile.csv').then(() => {
-    console.log(f.path); //file is saved on './src/newfile.csv'
-  });
+conn.download().then(() => {
+  console.log(`Download is done`.green);
+  conn.close();
+}).catch(err => {
+  console.log(`${err}`.red);
+  conn.close();
 });
 ```
 
@@ -85,8 +71,5 @@ Original code licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) Op
 
 # Changelog
 
-### v0.2.0 (January 21, 2017)
-* Core update with ES6 classes
-
-### v0.1.0 (January 12, 2017)
-* Basic implementation for file
+### v0.1.0 (January 27, 2017)
+* Upload and download methods

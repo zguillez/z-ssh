@@ -40,12 +40,25 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">z-ssh/bin/test.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">#!/usr/local/bin/node
-
 let conn = require(&apos;../src/Zssh&apos;);
+//conn.config = &apos;ssh.json&apos;;
+/*conn.download().then(() =&gt; {
+ console.log(`Download is done`.green);
+ conn.close();
+ }).catch(err =&gt; {
+ console.log(`${err}`.red);
+ conn.close();
+ });*/
+/*conn.upload().then(() =&gt; {
+ console.log(`Upload is done`.green);
+ conn.close();
+ }).catch(err =&gt; {
+ console.log(`${err}`.red);
+ conn.close();
+ });*/
 
-conn.prompt();
 
-console.log(&apos;ok&apos;);
+
 </code></pre>
 
 </div>

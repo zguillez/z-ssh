@@ -1,28 +1,28 @@
 {
   "type": "File",
   "start": 0,
-  "end": 94,
+  "end": 394,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 8,
+      "line": 21,
       "column": 0
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 94,
+    "end": 394,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 8,
+        "line": 21,
         "column": 0
       }
     },
@@ -30,44 +30,44 @@
     "body": [
       {
         "type": "VariableDeclaration",
-        "start": 23,
-        "end": 57,
+        "start": 22,
+        "end": 56,
         "loc": {
           "start": {
-            "line": 3,
+            "line": 2,
             "column": 0
           },
           "end": {
-            "line": 3,
+            "line": 2,
             "column": 34
           }
         },
         "declarations": [
           {
             "type": "VariableDeclarator",
-            "start": 27,
-            "end": 56,
+            "start": 26,
+            "end": 55,
             "loc": {
               "start": {
-                "line": 3,
+                "line": 2,
                 "column": 4
               },
               "end": {
-                "line": 3,
+                "line": 2,
                 "column": 33
               }
             },
             "id": {
               "type": "Identifier",
-              "start": 27,
-              "end": 31,
+              "start": 26,
+              "end": 30,
               "loc": {
                 "start": {
-                  "line": 3,
+                  "line": 2,
                   "column": 4
                 },
                 "end": {
-                  "line": 3,
+                  "line": 2,
                   "column": 8
                 },
                 "identifierName": "conn"
@@ -77,29 +77,29 @@
             },
             "init": {
               "type": "CallExpression",
-              "start": 34,
-              "end": 56,
+              "start": 33,
+              "end": 55,
               "loc": {
                 "start": {
-                  "line": 3,
+                  "line": 2,
                   "column": 11
                 },
                 "end": {
-                  "line": 3,
+                  "line": 2,
                   "column": 33
                 }
               },
               "callee": {
                 "type": "Identifier",
-                "start": 34,
-                "end": 41,
+                "start": 33,
+                "end": 40,
                 "loc": {
                   "start": {
-                    "line": 3,
+                    "line": 2,
                     "column": 11
                   },
                   "end": {
-                    "line": 3,
+                    "line": 2,
                     "column": 18
                   },
                   "identifierName": "require"
@@ -109,15 +109,15 @@
               "arguments": [
                 {
                   "type": "StringLiteral",
-                  "start": 42,
-                  "end": 55,
+                  "start": 41,
+                  "end": 54,
                   "loc": {
                     "start": {
-                      "line": 3,
+                      "line": 2,
                       "column": 19
                     },
                     "end": {
-                      "line": 3,
+                      "line": 2,
                       "column": 32
                     }
                   },
@@ -150,190 +150,57 @@
               }
             }
           }
+        ],
+        "trailingComments": [
+          {
+            "type": "CommentLine",
+            "value": "conn.config = 'ssh.json';",
+            "start": 57,
+            "end": 84,
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 0
+              },
+              "end": {
+                "line": 3,
+                "column": 27
+              }
+            }
+          },
+          {
+            "type": "CommentBlock",
+            "value": "conn.download().then(() => {\n console.log(`Download is done`.green);\n conn.close();\n }).catch(err => {\n console.log(`${err}`.red);\n conn.close();\n });",
+            "start": 85,
+            "end": 239,
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 0
+              },
+              "end": {
+                "line": 10,
+                "column": 6
+              }
+            }
+          },
+          {
+            "type": "CommentBlock",
+            "value": "conn.upload().then(() => {\n console.log(`Upload is done`.green);\n conn.close();\n }).catch(err => {\n console.log(`${err}`.red);\n conn.close();\n });",
+            "start": 240,
+            "end": 390,
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 0
+              },
+              "end": {
+                "line": 17,
+                "column": 6
+              }
+            }
+          }
         ]
-      },
-      {
-        "type": "ExpressionStatement",
-        "start": 59,
-        "end": 73,
-        "loc": {
-          "start": {
-            "line": 5,
-            "column": 0
-          },
-          "end": {
-            "line": 5,
-            "column": 14
-          }
-        },
-        "expression": {
-          "type": "CallExpression",
-          "start": 59,
-          "end": 72,
-          "loc": {
-            "start": {
-              "line": 5,
-              "column": 0
-            },
-            "end": {
-              "line": 5,
-              "column": 13
-            }
-          },
-          "callee": {
-            "type": "MemberExpression",
-            "start": 59,
-            "end": 70,
-            "loc": {
-              "start": {
-                "line": 5,
-                "column": 0
-              },
-              "end": {
-                "line": 5,
-                "column": 11
-              }
-            },
-            "object": {
-              "type": "Identifier",
-              "start": 59,
-              "end": 63,
-              "loc": {
-                "start": {
-                  "line": 5,
-                  "column": 0
-                },
-                "end": {
-                  "line": 5,
-                  "column": 4
-                },
-                "identifierName": "conn"
-              },
-              "name": "conn"
-            },
-            "property": {
-              "type": "Identifier",
-              "start": 64,
-              "end": 70,
-              "loc": {
-                "start": {
-                  "line": 5,
-                  "column": 5
-                },
-                "end": {
-                  "line": 5,
-                  "column": 11
-                },
-                "identifierName": "prompt"
-              },
-              "name": "prompt"
-            },
-            "computed": false
-          },
-          "arguments": []
-        }
-      },
-      {
-        "type": "ExpressionStatement",
-        "start": 75,
-        "end": 93,
-        "loc": {
-          "start": {
-            "line": 7,
-            "column": 0
-          },
-          "end": {
-            "line": 7,
-            "column": 18
-          }
-        },
-        "expression": {
-          "type": "CallExpression",
-          "start": 75,
-          "end": 92,
-          "loc": {
-            "start": {
-              "line": 7,
-              "column": 0
-            },
-            "end": {
-              "line": 7,
-              "column": 17
-            }
-          },
-          "callee": {
-            "type": "MemberExpression",
-            "start": 75,
-            "end": 86,
-            "loc": {
-              "start": {
-                "line": 7,
-                "column": 0
-              },
-              "end": {
-                "line": 7,
-                "column": 11
-              }
-            },
-            "object": {
-              "type": "Identifier",
-              "start": 75,
-              "end": 82,
-              "loc": {
-                "start": {
-                  "line": 7,
-                  "column": 0
-                },
-                "end": {
-                  "line": 7,
-                  "column": 7
-                },
-                "identifierName": "console"
-              },
-              "name": "console"
-            },
-            "property": {
-              "type": "Identifier",
-              "start": 83,
-              "end": 86,
-              "loc": {
-                "start": {
-                  "line": 7,
-                  "column": 8
-                },
-                "end": {
-                  "line": 7,
-                  "column": 11
-                },
-                "identifierName": "log"
-              },
-              "name": "log"
-            },
-            "computed": false
-          },
-          "arguments": [
-            {
-              "type": "StringLiteral",
-              "start": 87,
-              "end": 91,
-              "loc": {
-                "start": {
-                  "line": 7,
-                  "column": 12
-                },
-                "end": {
-                  "line": 7,
-                  "column": 16
-                }
-              },
-              "extra": {
-                "rawValue": "ok",
-                "raw": "'ok'"
-              },
-              "value": "ok"
-            }
-          ]
-        }
       }
     ],
     "directives": []
@@ -352,6 +219,54 @@
         "end": {
           "line": 1,
           "column": 21
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": "conn.config = 'ssh.json';",
+      "start": 57,
+      "end": 84,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "conn.download().then(() => {\n console.log(`Download is done`.green);\n conn.close();\n }).catch(err => {\n console.log(`${err}`.red);\n conn.close();\n });",
+      "start": 85,
+      "end": 239,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 10,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "conn.upload().then(() => {\n console.log(`Upload is done`.green);\n conn.close();\n }).catch(err => {\n console.log(`${err}`.red);\n conn.close();\n });",
+      "start": 240,
+      "end": 390,
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 0
+        },
+        "end": {
+          "line": 17,
+          "column": 6
         }
       }
     }
@@ -388,15 +303,15 @@
         "updateContext": null
       },
       "value": "let",
-      "start": 23,
-      "end": 26,
+      "start": 22,
+      "end": 25,
       "loc": {
         "start": {
-          "line": 3,
+          "line": 2,
           "column": 0
         },
         "end": {
-          "line": 3,
+          "line": 2,
           "column": 3
         }
       }
@@ -414,15 +329,15 @@
         "binop": null
       },
       "value": "conn",
-      "start": 27,
-      "end": 31,
+      "start": 26,
+      "end": 30,
       "loc": {
         "start": {
-          "line": 3,
+          "line": 2,
           "column": 4
         },
         "end": {
-          "line": 3,
+          "line": 2,
           "column": 8
         }
       }
@@ -441,15 +356,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 32,
-      "end": 33,
+      "start": 31,
+      "end": 32,
       "loc": {
         "start": {
-          "line": 3,
+          "line": 2,
           "column": 9
         },
         "end": {
-          "line": 3,
+          "line": 2,
           "column": 10
         }
       }
@@ -467,15 +382,15 @@
         "binop": null
       },
       "value": "require",
-      "start": 34,
-      "end": 41,
+      "start": 33,
+      "end": 40,
       "loc": {
         "start": {
-          "line": 3,
+          "line": 2,
           "column": 11
         },
         "end": {
-          "line": 3,
+          "line": 2,
           "column": 18
         }
       }
@@ -492,15 +407,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 41,
-      "end": 42,
+      "start": 40,
+      "end": 41,
       "loc": {
         "start": {
-          "line": 3,
+          "line": 2,
           "column": 18
         },
         "end": {
-          "line": 3,
+          "line": 2,
           "column": 19
         }
       }
@@ -519,15 +434,15 @@
         "updateContext": null
       },
       "value": "../src/Zssh",
-      "start": 42,
-      "end": 55,
+      "start": 41,
+      "end": 54,
       "loc": {
         "start": {
-          "line": 3,
+          "line": 2,
           "column": 19
         },
         "end": {
-          "line": 3,
+          "line": 2,
           "column": 32
         }
       }
@@ -543,378 +458,91 @@
         "prefix": false,
         "postfix": false,
         "binop": null
+      },
+      "start": 54,
+      "end": 55,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 32
+        },
+        "end": {
+          "line": 2,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
       },
       "start": 55,
       "end": 56,
       "loc": {
         "start": {
-          "line": 3,
-          "column": 32
-        },
-        "end": {
-          "line": 3,
-          "column": 33
-        }
-      }
-    },
-    {
-      "type": {
-        "label": ";",
-        "beforeExpr": true,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "start": 56,
-      "end": 57,
-      "loc": {
-        "start": {
-          "line": 3,
+          "line": 2,
           "column": 33
         },
         "end": {
-          "line": 3,
+          "line": 2,
           "column": 34
         }
       }
     },
     {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "conn",
-      "start": 59,
-      "end": 63,
+      "type": "CommentLine",
+      "value": "conn.config = 'ssh.json';",
+      "start": 57,
+      "end": 84,
       "loc": {
         "start": {
-          "line": 5,
+          "line": 3,
           "column": 0
         },
         "end": {
-          "line": 5,
-          "column": 4
+          "line": 3,
+          "column": 27
         }
       }
     },
     {
-      "type": {
-        "label": ".",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "start": 63,
-      "end": 64,
+      "type": "CommentBlock",
+      "value": "conn.download().then(() => {\n console.log(`Download is done`.green);\n conn.close();\n }).catch(err => {\n console.log(`${err}`.red);\n conn.close();\n });",
+      "start": 85,
+      "end": 239,
       "loc": {
         "start": {
-          "line": 5,
-          "column": 4
-        },
-        "end": {
-          "line": 5,
-          "column": 5
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "prompt",
-      "start": 64,
-      "end": 70,
-      "loc": {
-        "start": {
-          "line": 5,
-          "column": 5
-        },
-        "end": {
-          "line": 5,
-          "column": 11
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "(",
-        "beforeExpr": true,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "start": 70,
-      "end": 71,
-      "loc": {
-        "start": {
-          "line": 5,
-          "column": 11
-        },
-        "end": {
-          "line": 5,
-          "column": 12
-        }
-      }
-    },
-    {
-      "type": {
-        "label": ")",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "start": 71,
-      "end": 72,
-      "loc": {
-        "start": {
-          "line": 5,
-          "column": 12
-        },
-        "end": {
-          "line": 5,
-          "column": 13
-        }
-      }
-    },
-    {
-      "type": {
-        "label": ";",
-        "beforeExpr": true,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "start": 72,
-      "end": 73,
-      "loc": {
-        "start": {
-          "line": 5,
-          "column": 13
-        },
-        "end": {
-          "line": 5,
-          "column": 14
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "console",
-      "start": 75,
-      "end": 82,
-      "loc": {
-        "start": {
-          "line": 7,
+          "line": 4,
           "column": 0
         },
         "end": {
-          "line": 7,
-          "column": 7
+          "line": 10,
+          "column": 6
         }
       }
     },
     {
-      "type": {
-        "label": ".",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "start": 82,
-      "end": 83,
+      "type": "CommentBlock",
+      "value": "conn.upload().then(() => {\n console.log(`Upload is done`.green);\n conn.close();\n }).catch(err => {\n console.log(`${err}`.red);\n conn.close();\n });",
+      "start": 240,
+      "end": 390,
       "loc": {
         "start": {
-          "line": 7,
-          "column": 7
+          "line": 11,
+          "column": 0
         },
         "end": {
-          "line": 7,
-          "column": 8
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "log",
-      "start": 83,
-      "end": 86,
-      "loc": {
-        "start": {
-          "line": 7,
-          "column": 8
-        },
-        "end": {
-          "line": 7,
-          "column": 11
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "(",
-        "beforeExpr": true,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "start": 86,
-      "end": 87,
-      "loc": {
-        "start": {
-          "line": 7,
-          "column": 11
-        },
-        "end": {
-          "line": 7,
-          "column": 12
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "string",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "value": "ok",
-      "start": 87,
-      "end": 91,
-      "loc": {
-        "start": {
-          "line": 7,
-          "column": 12
-        },
-        "end": {
-          "line": 7,
-          "column": 16
-        }
-      }
-    },
-    {
-      "type": {
-        "label": ")",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "start": 91,
-      "end": 92,
-      "loc": {
-        "start": {
-          "line": 7,
-          "column": 16
-        },
-        "end": {
-          "line": 7,
-          "column": 17
-        }
-      }
-    },
-    {
-      "type": {
-        "label": ";",
-        "beforeExpr": true,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "start": 92,
-      "end": 93,
-      "loc": {
-        "start": {
-          "line": 7,
-          "column": 17
-        },
-        "end": {
-          "line": 7,
-          "column": 18
+          "line": 17,
+          "column": 6
         }
       }
     },
@@ -931,15 +559,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 94,
-      "end": 94,
+      "start": 394,
+      "end": 394,
       "loc": {
         "start": {
-          "line": 8,
+          "line": 21,
           "column": 0
         },
         "end": {
-          "line": 8,
+          "line": 21,
           "column": 0
         }
       }

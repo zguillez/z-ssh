@@ -16,10 +16,13 @@ class Zssh {
    */
   constructor() {
     /**
-     * Archivo de configuración
+     * Ruta del archivo de configuración
      */
     this.config = path.resolve(__dirname, './ssh.json');
-    this.configData;
+    /**
+     * Archivo de configuración
+     */
+    this.configData = {};
   }
 
   /**
@@ -91,30 +94,49 @@ class Zssh {
     });
   }
 
+  /**
+   * Descarga el directorio remoto en el directorio local
+   * @returns {Promise}
+   */
   download() {
     return new Promise((resolve, reject) => {
       this.connect().then(() => {
-        conn.getFile(path.resolve(__dirname, '../', this.configData.local), this.configData.remote).then(() => {
-          resolve(true);
-        }, err => {
+        conn.exec('cd /var/www/vhosts/test.linkemann.net/httpdocs/ssh && tar -cvf /tmp/temp.tar .').then(() => {
+          conn.getFile(path.resolve(__dirname, this.configData.local, '../../.temp') + '/temp.tar', '/tmp/temp.tar').then(() => {
+            conn.exec('rm /tmp/temp.tar').then(() => {
+              this.shell('mkdir -p .temp/tar');
+              this.shell('tar -xvf .temp/temp.tar -C .temp/tar');
+              this.shell('cd .temp/tar/ && mv ./* ' + path.resolve(__dirname, '../', this.configData.local) + '/');
+              this.shell('rm .temp/temp.tar');
+              resolve(true);
+            }).catch(err => {
+              reject(err);
+            });
+          }, err => {
+            reject(err);
+          });
+        }).catch(err => {
           reject(err);
         });
       }).catch(err => reject(err));
     });
   }
 
+  /**
+   * Sube al directorio remoto el directorio local
+   * @returns {Promise}
+   */
   upload() {
     return new Promise((resolve, reject) => {
       this.connect().then(() => {
-        let files = [];
-        for(let file of this.configData.files) {
-          files.push({
-            local: `${this.configData.local}/${file}`,
-            remote: `${this.configData.remote}/${file}`
+        this.shell('cd ' + path.resolve(__dirname, '../', this.configData.local) + '/ && tar -cvf ' + path.resolve(__dirname, '../.temp') + '/temp.tar .');
+        conn.putFile(path.resolve(__dirname, '../.temp') + '/temp.tar', '/tmp/temp.tar').then(() => {
+          conn.exec('tar -xvf /tmp/temp.tar -C ' + this.configData.remote + ' && rm /tmp/temp.tar').then(() => {
+            this.shell('rm .temp/temp.tar');
+            resolve(true);
+          }).catch(err => {
+            reject(err);
           });
-        }
-        conn.putFiles(files).then(() => {
-          resolve(true);
         }, err => {
           reject(err);
         });
@@ -126,7 +148,7 @@ class Zssh {
    * Genera una consulta desde la consola: host | username | password | folder
    */
   prompt(callback) {
-    if(! this.configData) {
+    if(this.configData != {}) {
       let data = {};
       this.checkConfig().then(data => {
         data = JSON.parse(data);
@@ -140,12 +162,21 @@ class Zssh {
     }
   }
 
+  /**
+   * Lanza la consulta
+   * @param data
+   * @param callback
+   * @private
+   */
   _prompt(data, callback) {
     prompt.start();
     prompt.get(this._promptCreateSchema(data), (err, result) => {
       for(let [key, value] of Object.entries(result)) {
         data[key] = value;
       }
+      /**
+       * Set data config
+       */
       this.configData = data;
       callback(this.configData);
     });

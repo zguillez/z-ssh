@@ -43,10 +43,12 @@
 require(&apos;colors&apos;);
 const path = require(&apos;path&apos;);
 const prompt = require(&apos;prompt&apos;);
+const shell = require(&apos;shelljs&apos;);
 const SSH = require(&apos;node-ssh&apos;);
 const zfile = require(&apos;z-file&apos;);
 const conn = new SSH();
 /**
+ *
  * Class Zssh
  */
 class Zssh {
@@ -55,108 +57,236 @@ class Zssh {
    */
   constructor() {
     /**
-     * Archivo de configuraci&#xF3;n
+     * Ruta del archivo de configuraci&#xF3;n
      */
     this.config = path.resolve(__dirname, &apos;./ssh.json&apos;);
+    /**
+     * Archivo de configuraci&#xF3;n
+     */
+    this.configData = {};
   }
 
   /**
-   *
-   * Genera una consulta desde la consola: host | username | password | folder
+   * Ruta del fiechero de configuraci&#xF3;n
+   * @param {string} file - Ruta del fichero de configuraci&#xF3;n
    */
-  prompt() {
-    zfile.read(this.config).then((data)=&gt; {
-      data = JSON.parse(data);
-      let schema = {
-        properties: {}
-      };
-      if(! data.host) {
-        schema.properties.host = {
-          description: `host`.yellow,
-          pattern: /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/,
-          message: &apos;invalid host format&apos;,
-          default: data.host,
-          required: true,
-        }
-      }
-      if(! data.username) {
-        schema.properties.username = {
-          description: `username`.yellow,
-          pattern: /^\w+$/,
-          message: &apos;invalid username format&apos;,
-          default: data.username,
-          required: true,
-        }
-      }
-      if(! data.password) {
-        schema.properties.password = {
-          description: `password`.yellow,
-          pattern: /^[a-zA-Z0-9]+$/,
-          message: &apos;invalid password format&apos;,
-          hidden: true,
-          required: true,
-        }
-      }
-      if(! data.source) {
-        schema.properties.source = {
-          description: `source`.yellow,
-          pattern: /^\w+$/,
-          message: &apos;invalid source format&apos;,
-          default: data.source,
-          required: true,
-        }
-      }
-      if(! data.output) {
-        schema.properties.output = {
-          description: `output`.yellow,
-          pattern: /^\w+$/,
-          message: &apos;invalid output format&apos;,
-          default: data.output,
-          required: true,
-        }
-      }
-      if(! data.folder) {
-        schema.properties.folder = {
-          description: `folder`.yellow,
-          pattern: /^\w+$/,
-          message: &apos;invalid folder format&apos;,
-          default: data.folder,
-          required: true,
-        }
-      }
-      prompt.start();
-      prompt.get(schema, (err, result) =&gt; {
-        let options = {
-          host: result.host,
-          username: result.username,
-          password: result.password,
-        };
-        /* this.connect(options).then((conn) =&gt; {
-         conn.putDirectory(path.resolve(__dirname, &apos;../../dist&apos;), `/var/www/vhosts/test.linkemann.net/httpdocs/${result.folder}`).then(() =&gt; {
-         console.log(`\nDeployed!\n`.green);
-         conn.dispose();
-         }, (error) =&gt; {
-         console.log(`\nerror: ${error}\n`.red);
-         conn.dispose();
-         });
-         });*/
+  set config(file) {
+    this.constructor.config = path.resolve(__dirname, file);
+  }
+
+  /**
+   * Ruta del fiechero de configuraci&#xF3;n
+   * @returns {string} config - Ruta del fichero de configuraci&#xF3;n
+   */
+  get config() {
+    return this.constructor.config;
+  }
+
+  /**
+   * Devuelve true al realizarse la connexi&#xF3;n SSH
+   * @returns {Promise}
+   */
+  connect() {
+    return new Promise((resolve, reject) =&gt; {
+      this.prompt(config =&gt; {
+        conn.dispose();
+        conn.connect({
+          host: config.host,
+          username: config.username,
+          password: config.password
+        }).then(() =&gt; resolve(true)).catch(err =&gt; reject(err));
       });
     });
   }
 
-  checkOptions() {}
+  /**
+   * Cierra la conexi&#xF3;n SSH
+   */
+  close() {
+    conn.dispose();
+  }
 
   /**
-   *
-   * Crea una conexi&#xF3;n ssh con el servidor.
-   * @param {object} opt - Objeto de configuraci&#xF3;n para la conexi&#xF3;n ssh
+   * Ejecuta un commando en el servidor
+   * @param command
+   * @returns {Promise}
    */
-  connect(opt) {
-    return conn.connect({
-      host: opt.host,
-      username: opt.username,
-      password: opt.password,
+  exec(command) {
+    return new Promise((resolve, reject) =&gt; {
+      this.connect().then(() =&gt; {
+        conn.execCommand(command).then(result =&gt; {
+          console.log(&apos;STDOUT: &apos; + result.stdout);
+          console.log(&apos;STDERR: &apos; + result.stderr);
+          resolve(true);
+        });
+      }).catch(err =&gt; reject(err));
     });
+  }
+
+  /**
+   * Ejecuta un commando de consola
+   * @param command
+   * @returns {Promise}
+   */
+  shell(command) {
+    return new Promise((resolve, reject) =&gt; {
+      shell.exec(command);
+      resolve(true);
+    });
+  }
+
+  /**
+   * Descarga el directorio remoto en el directorio local
+   * @returns {Promise}
+   */
+  download() {
+    return new Promise((resolve, reject) =&gt; {
+      this.connect().then(() =&gt; {
+        conn.exec(&apos;cd /var/www/vhosts/test.linkemann.net/httpdocs/ssh &amp;&amp; tar -cvf /tmp/temp.tar .&apos;).then(() =&gt; {
+          conn.getFile(path.resolve(__dirname, this.configData.local, &apos;../../.temp&apos;) + &apos;/temp.tar&apos;, &apos;/tmp/temp.tar&apos;).then(() =&gt; {
+            conn.exec(&apos;rm /tmp/temp.tar&apos;).then(() =&gt; {
+              this.shell(&apos;mkdir -p .temp/tar&apos;);
+              this.shell(&apos;tar -xvf .temp/temp.tar -C .temp/tar&apos;);
+              this.shell(&apos;cd .temp/tar/ &amp;&amp; mv ./* &apos; + path.resolve(__dirname, &apos;../&apos;, this.configData.local) + &apos;/&apos;);
+              this.shell(&apos;rm .temp/temp.tar&apos;);
+              resolve(true);
+            }).catch(err =&gt; {
+              reject(err);
+            });
+          }, err =&gt; {
+            reject(err);
+          });
+        }).catch(err =&gt; {
+          reject(err);
+        });
+      }).catch(err =&gt; reject(err));
+    });
+  }
+
+  /**
+   * Sube al directorio remoto el directorio local
+   * @returns {Promise}
+   */
+  upload() {
+    return new Promise((resolve, reject) =&gt; {
+      this.connect().then(() =&gt; {
+        this.shell(&apos;cd &apos; + path.resolve(__dirname, &apos;../&apos;, this.configData.local) + &apos;/ &amp;&amp; tar -cvf &apos; + path.resolve(__dirname, &apos;../.temp&apos;) + &apos;/temp.tar .&apos;);
+        conn.putFile(path.resolve(__dirname, &apos;../.temp&apos;) + &apos;/temp.tar&apos;, &apos;/tmp/temp.tar&apos;).then(() =&gt; {
+          conn.exec(&apos;tar -xvf /tmp/temp.tar -C &apos; + this.configData.remote + &apos; &amp;&amp; rm /tmp/temp.tar&apos;).then(() =&gt; {
+            this.shell(&apos;rm .temp/temp.tar&apos;);
+            resolve(true);
+          }).catch(err =&gt; {
+            reject(err);
+          });
+        }, err =&gt; {
+          reject(err);
+        });
+      }).catch(err =&gt; reject(err));
+    });
+  }
+
+  /**
+   * Genera una consulta desde la consola: host | username | password | folder
+   */
+  prompt(callback) {
+    if(this.configData != {}) {
+      let data = {};
+      this.checkConfig().then(data =&gt; {
+        data = JSON.parse(data);
+        this._prompt(data, callback);
+      }).catch(err =&gt; {
+        //console.log(`${err}`.red);
+        this._prompt(data, callback);
+      });
+    } else {
+      this._prompt(this.configData, callback);
+    }
+  }
+
+  /**
+   * Lanza la consulta
+   * @param data
+   * @param callback
+   * @private
+   */
+  _prompt(data, callback) {
+    prompt.start();
+    prompt.get(this._promptCreateSchema(data), (err, result) =&gt; {
+      for(let [key, value] of Object.entries(result)) {
+        data[key] = value;
+      }
+      /**
+       * Set data config
+       */
+      this.configData = data;
+      callback(this.configData);
+    });
+  }
+
+  /**
+   * Comprueba los parametros introducidos en el fichero de configuraci&#xF3;n
+   * @param data
+   * @returns {object} - Objeto schema para el prompt
+   * @private
+   */
+  _promptCreateSchema(data) {
+    let schema = {
+      properties: {}
+    };
+    if(! data.host) {
+      schema.properties.host = {
+        description: `host`.yellow,
+        pattern: /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/,
+        message: &apos;invalid host format&apos;,
+        default: data.host,
+        required: true,
+      }
+    }
+    if(! data.username) {
+      schema.properties.username = {
+        description: `username`.yellow,
+        pattern: /^\w+$/,
+        message: &apos;invalid username format&apos;,
+        default: data.username,
+        required: true,
+      }
+    }
+    if(! data.password) {
+      schema.properties.password = {
+        description: `password`.yellow,
+        pattern: /^[a-zA-Z0-9]+$/,
+        message: &apos;invalid password format&apos;,
+        hidden: true,
+        required: true,
+      }
+    }
+    if(! data.local) {
+      schema.properties.local = {
+        description: `local folder`.yellow,
+        pattern: /^\w+$/,
+        message: &apos;invalid local folder format&apos;,
+        default: data.local,
+        required: true,
+      }
+    }
+    if(! data.remote) {
+      schema.properties.remote = {
+        description: `remote folder`.yellow,
+        pattern: /^\w+$/,
+        message: &apos;invalid remote folder format&apos;,
+        default: data.remote,
+        required: true,
+      }
+    }
+    return schema;
+  }
+
+  /**
+   * Comprueba si existe el fichero de configuraci&#xF3;n
+   * @returns {Promise}
+   */
+  checkConfig() {
+    return zfile.read(this.constructor.config);
   }
 }
 /**

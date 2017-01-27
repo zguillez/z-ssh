@@ -3930,15 +3930,33 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "z-ssh/src/zssh.js~zssh#checkoptions",
-    "class/z-ssh/src/Zssh.js~Zssh.html#instance-method-checkOptions",
-    "z-ssh/src/Zssh.js~Zssh#checkOptions",
+    "z-ssh/src/zssh.js~zssh#checkconfig",
+    "class/z-ssh/src/Zssh.js~Zssh.html#instance-method-checkConfig",
+    "z-ssh/src/Zssh.js~Zssh#checkConfig",
+    "method"
+  ],
+  [
+    "z-ssh/src/zssh.js~zssh#close",
+    "class/z-ssh/src/Zssh.js~Zssh.html#instance-method-close",
+    "z-ssh/src/Zssh.js~Zssh#close",
     "method"
   ],
   [
     "z-ssh/src/zssh.js~zssh#config",
-    "class/z-ssh/src/Zssh.js~Zssh.html#instance-member-config",
+    "class/z-ssh/src/Zssh.js~Zssh.html#instance-get-config",
     "z-ssh/src/Zssh.js~Zssh#config",
+    "member"
+  ],
+  [
+    "z-ssh/src/zssh.js~zssh#config",
+    "class/z-ssh/src/Zssh.js~Zssh.html#instance-set-config",
+    "z-ssh/src/Zssh.js~Zssh#config",
+    "member"
+  ],
+  [
+    "z-ssh/src/zssh.js~zssh#configdata",
+    "class/z-ssh/src/Zssh.js~Zssh.html#instance-member-configData",
+    "z-ssh/src/Zssh.js~Zssh#configData",
     "member"
   ],
   [
@@ -3954,9 +3972,33 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "z-ssh/src/zssh.js~zssh#download",
+    "class/z-ssh/src/Zssh.js~Zssh.html#instance-method-download",
+    "z-ssh/src/Zssh.js~Zssh#download",
+    "method"
+  ],
+  [
+    "z-ssh/src/zssh.js~zssh#exec",
+    "class/z-ssh/src/Zssh.js~Zssh.html#instance-method-exec",
+    "z-ssh/src/Zssh.js~Zssh#exec",
+    "method"
+  ],
+  [
     "z-ssh/src/zssh.js~zssh#prompt",
     "class/z-ssh/src/Zssh.js~Zssh.html#instance-method-prompt",
     "z-ssh/src/Zssh.js~Zssh#prompt",
+    "method"
+  ],
+  [
+    "z-ssh/src/zssh.js~zssh#shell",
+    "class/z-ssh/src/Zssh.js~Zssh.html#instance-method-shell",
+    "z-ssh/src/Zssh.js~Zssh#shell",
+    "method"
+  ],
+  [
+    "z-ssh/src/zssh.js~zssh#upload",
+    "class/z-ssh/src/Zssh.js~Zssh.html#instance-method-upload",
+    "z-ssh/src/Zssh.js~Zssh#upload",
     "method"
   ]
 ]

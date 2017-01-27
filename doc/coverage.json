@@ -1,14 +1,12 @@
 {
-  "coverage": "85.71%",
-  "expectCount": 7,
-  "actualCount": 6,
+  "coverage": "100%",
+  "expectCount": 14,
+  "actualCount": 14,
   "files": {
     "z-ssh/src/Zssh.js": {
-      "expectCount": 7,
-      "actualCount": 6,
-      "undocumentLines": [
-        106
-      ]
+      "expectCount": 14,
+      "actualCount": 14,
+      "undocumentLines": []
     }
   }
 }

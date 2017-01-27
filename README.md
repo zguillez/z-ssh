@@ -1,5 +1,5 @@
 # z-ssh
-Nodejs tools for file streams
+Nodejs tools for remote ssh connections
 
 ## Install
 ```
@@ -39,10 +39,10 @@ Upload the local folder to the remote folder:
 
 ```
 conn.upload().then(() => {
-  console.log(`Upload is done`.green);
+  console.log(`Upload is done`);
   conn.close();
 }).catch(err => {
-  console.log(`${err}`.red);
+  console.log(`${err}`);
   conn.close();
 });
 ```
@@ -53,10 +53,38 @@ Download the remote folder to the local folder:
 
 ```
 conn.download().then(() => {
-  console.log(`Download is done`.green);
+  console.log(`Download is done`);
   conn.close();
 }).catch(err => {
-  console.log(`${err}`.red);
+  console.log(`${err}`);
+  conn.close();
+});
+```
+
+## Shell script on remote server
+
+Execute a shell script on the remote server:
+
+```
+conn.exec('cd /var/www/vhosts/mydomain.net/httpdocs/ssh && tar -cvf backup.tar .').then(() => {
+  console.log(`Action is done`);
+  conn.close();
+}).catch(err => {
+  console.log(`${err}`);
+  conn.close();
+});
+```
+
+## Shell script on local server
+
+Execute a shell script on the local server:
+
+```
+conn.shell('cd /Users/myusername/Documents/myfolder && tar -cvf backup.tar .').then(() => {
+  console.log(`Action is done`);
+  conn.close();
+}).catch(err => {
+  console.log(`${err}`);
   conn.close();
 });
 ```

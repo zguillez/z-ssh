@@ -101,7 +101,7 @@ class Zssh {
   download() {
     return new Promise((resolve, reject) => {
       this.connect().then(() => {
-        conn.exec('cd /var/www/vhosts/test.linkemann.net/httpdocs/ssh && tar -cvf /tmp/temp.tar .').then(() => {
+        conn.exec('cd ' + path.resolve(__dirname, '../', this.configData.local) + '/ && tar -cvf ' + path.resolve(__dirname, '../.temp') + '/temp.tar .').then(() => {
           conn.getFile(path.resolve(__dirname, this.configData.local, '../../.temp') + '/temp.tar', '/tmp/temp.tar').then(() => {
             conn.exec('rm /tmp/temp.tar').then(() => {
               this.shell('mkdir -p .temp/tar');

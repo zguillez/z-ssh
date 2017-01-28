@@ -1,6 +1,6 @@
 'use strict';
 /**
  *
- * @type {Zfile}
+ * @type {Zssh}
  */
-module.exports = require('./src/Zfile.js');
+module.exports = require('./src/Zssh.js');

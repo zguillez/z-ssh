@@ -1,6 +1,6 @@
 {
   "name": "z-ssh",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Tools for ssh connections",
   "author": {
     "name": "Guillermo de la Iglesia",
@@ -17,7 +17,8 @@
   "scripts": {
     "test": "bin/test.js",
     "lint": "eslint index.js bin/*.js --fix || true",
-    "doc": "rimraf doc/* && esdoc"
+    "doc": "rimraf doc/* && esdoc",
+    "clean": "rimraf .temp/*"
   },
   "devDependencies": {
     "minimist": "latest",
@@ -33,11 +34,11 @@
     "eslint-plugin-html": "latest"
   },
   "dependencies": {
-    "shelljs": "latest",
-    "prompt": "latest",
+    "file-type": "latest",
     "node-ssh": "latest",
-    "z-file": "latest",
-    "file-type": "latest"
+    "prompt": "latest",
+    "shelljs": "latest",
+    "z-file": "latest"
   },
   "license": "MIT"
 }

@@ -171,8 +171,10 @@ class Zssh {
   _prompt(data, callback) {
     prompt.start();
     prompt.get(this._promptCreateSchema(data), (err, result) => {
-      for(let [key, value] of Object.entries(result)) {
-        data[key] = value;
+      if(Object.keys(result).length) {
+        for(let [key, value] of Object.entries(result)) {
+          data[key] = value;
+        }
       }
       /**
        * Set data config
@@ -245,7 +247,7 @@ class Zssh {
    * @returns {Promise}
    */
   checkConfig() {
-    return zfile.read(this.constructor.config);
+    return zfile.read(this.config);
   }
 }
 /**

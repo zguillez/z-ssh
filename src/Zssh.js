@@ -101,12 +101,12 @@ class Zssh {
   download() {
     return new Promise((resolve, reject) => {
       this.connect().then(() => {
-        conn.exec('cd ' + path.resolve(__dirname, '../', this.configData.local) + '/ && tar -cvf ' + path.resolve(__dirname, '../.temp') + '/temp.tar .').then(() => {
-          conn.getFile(path.resolve(__dirname, this.configData.local, '../../.temp') + '/temp.tar', '/tmp/temp.tar').then(() => {
+        conn.exec('cd ' + this.configData.remote + ' && tar -cvf ' + path.resolve(__dirname, '../../../.temp') + '/temp.tar .').then(() => {
+          conn.getFile(path.resolve(__dirname, this.configData.local, '../../../../.temp') + '/temp.tar', '/tmp/temp.tar').then(() => {
             conn.exec('rm /tmp/temp.tar').then(() => {
               this.shell('mkdir -p .temp/tar');
               this.shell('tar -xvf .temp/temp.tar -C .temp/tar');
-              this.shell('cd .temp/tar/ && mv ./* ' + path.resolve(__dirname, '../', this.configData.local) + '/');
+              this.shell('cd .temp/tar/ && mv ./* ' + path.resolve(__dirname, '../../../', this.configData.local) + '/');
               this.shell('rm .temp/temp.tar');
               resolve(true);
             }).catch(err => {
@@ -129,8 +129,8 @@ class Zssh {
   upload() {
     return new Promise((resolve, reject) => {
       this.connect().then(() => {
-        this.shell('cd ' + path.resolve(__dirname, '../', this.configData.local) + '/ && tar -cvf ' + path.resolve(__dirname, '../.temp') + '/temp.tar .');
-        conn.putFile(path.resolve(__dirname, '../.temp') + '/temp.tar', '/tmp/temp.tar').then(() => {
+        this.shell('cd ' + path.resolve(__dirname, '../../../', this.configData.local) + '/ && tar -cvf ' + path.resolve(__dirname, '../../../.temp') + '/temp.tar .');
+        conn.putFile(path.resolve(__dirname, '../../../.temp') + '/temp.tar', '/tmp/temp.tar').then(() => {
           conn.exec('tar -xvf /tmp/temp.tar -C ' + this.configData.remote + ' && rm /tmp/temp.tar').then(() => {
             this.shell('rm .temp/temp.tar');
             resolve(true);

@@ -172,8 +172,8 @@ class Zssh {
     prompt.start();
     prompt.get(this._promptCreateSchema(data), (err, result) => {
       if(Object.keys(result).length) {
-        for(let [key, value] of Object.entries(result)) {
-          data[key] = value;
+        for(var key in result) {
+          data[key] = result[key];
         }
       }
       /**

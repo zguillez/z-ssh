@@ -1,4 +1,6 @@
 # z-ssh
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/zguillez/z-ssh.svg)](https://greenkeeper.io/)
 Nodejs tools for remote ssh connections
 
 ## Install

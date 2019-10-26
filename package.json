@@ -1,6 +1,6 @@
 {
   "name": "z-ssh",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Tools for ssh connections",
   "author": {
     "name": "Guillermo de la Iglesia",
@@ -21,24 +21,24 @@
     "clean": "rimraf .temp/*"
   },
   "devDependencies": {
-    "minimist": "latest",
-    "colors": "latest",
-    "copy": "latest",
-    "del": "latest",
-    "rimraf": "latest",
-    "esdoc": "latest",
-    "esdoc-node": "latest",
-    "esdoc-node-plugin": "latest",
-    "eslint": "latest",
-    "eslint-config-google": "latest",
-    "eslint-plugin-html": "latest"
+    "minimist": "1.2.0",
+    "colors": "1.4.0",
+    "copy": "0.3.2",
+    "del": "5.1.0",
+    "rimraf": "3.0.0",
+    "esdoc": "1.1.0",
+    "esdoc-node": "1.0.5",
+    "esdoc-node-plugin": "0.2.1",
+    "eslint": "6.6.0",
+    "eslint-config-google": "0.14.0",
+    "eslint-plugin-html": "6.0.0"
   },
   "dependencies": {
-    "file-type": "latest",
-    "node-ssh": "latest",
-    "prompt": "latest",
-    "shelljs": "latest",
-    "z-file": "latest"
+    "file-type": "12.3.1",
+    "node-ssh": "6.0.0",
+    "prompt": "1.0.0",
+    "shelljs": "0.8.3",
+    "z-file": "0.5.5"
   },
   "license": "MIT"
 }

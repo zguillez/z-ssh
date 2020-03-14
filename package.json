@@ -22,7 +22,7 @@
     "clean": "rimraf .temp/*"
   },
   "devDependencies": {
-    "minimist": "1.2.0",
+    "minimist": "1.2.2",
     "colors": "1.4.0",
     "copy": "0.3.2",
     "del": "5.1.0",

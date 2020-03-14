@@ -4,10 +4,9 @@ const fs = require('fs');
 const path = require('path');
 const colors = require('colors');
 const replace = require('replace');
+const shell = require('shelljs');
 const argv = require('minimist')(process.argv.slice(2));
-const config = JSON.parse(
-    fs.readFileSync(path.resolve(__dirname, '../package.json'), 'utf8')
-);
+const config = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../package.json'), 'utf8'));
 // -----------------------------------
 const version = config.version.split('.');
 if (argv.major) {
@@ -31,5 +30,8 @@ console.log(
     `=> Package update from version`.green,
     `${config.version}`.yellow,
     `to`.green,
-    `${version.join('.')}`.yellow
-);
+    `${version.join('.')}`.yellow);
+shell.exec(`git add --all`);
+shell.exec(`git commit -m update`);
+shell.exec(`git push origin master`);
+console.log(`=> Done!\n`.green);

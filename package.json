@@ -1,6 +1,6 @@
 {
   "name": "z-ssh",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "description": "Tools for ssh connections",
   "author": {
     "name": "Guillermo de la Iglesia",
@@ -15,9 +15,9 @@
   ],
   "main": "index.js",
   "scripts": {
-    "prepare": "bin/prepare.js && z git push -m update",
-    "test": "bin/test.js",
+    "prepare": "npm run lint && npm run test && bin/prepare.js",
     "lint": "eslint index.js src/*.js bin/*.js --fix || true",
+    "test": "bin/test.js",
     "doc": "rimraf doc/* && esdoc",
     "clean": "rimraf .temp/*"
   },

@@ -26,11 +26,7 @@ replace({
   paths: ['package.json'],
   silent: true,
 });
-console.log(
-    `=> Package update from version`.green,
-    `${config.version}`.yellow,
-    `to`.green,
-    `${version.join('.')}`.yellow);
+console.log(`=> Package update from version`.green, `${config.version}`.yellow, `to`.green, `${version.join('.')}`.yellow);
 shell.exec(`git add --all`);
 shell.exec(`git commit -m update`);
 shell.exec(`git push origin master`);

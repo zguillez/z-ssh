@@ -6,6 +6,7 @@ const shell = require('shelljs');
 const SSH = require('node-ssh');
 const zfile = require('z-file');
 const conn = new SSH();
+
 /**
  *
  * Class Zssh
@@ -35,7 +36,7 @@ class Zssh {
 
   /**
    * Ruta del fiechero de configuración
-   * @returns {string} config - Ruta del fichero de configuración
+   * @return {string} config - Ruta del fichero de configuración
    */
   get config() {
     return this.constructor.config;
@@ -43,17 +44,17 @@ class Zssh {
 
   /**
    * Devuelve true al realizarse la connexión SSH
-   * @returns {Promise}
+   * @return {Promise}
    */
   connect() {
     return new Promise((resolve, reject) => {
-      this.prompt(config => {
+      this.prompt((config) => {
         conn.dispose();
         conn.connect({
           host: config.host,
           username: config.username,
-          password: config.password
-        }).then(() => resolve(true)).catch(err => reject(err));
+          password: config.password,
+        }).then(() => resolve(true)).catch((err) => reject(err));
       });
     });
   }
@@ -68,24 +69,24 @@ class Zssh {
   /**
    * Ejecuta un commando en el servidor
    * @param command
-   * @returns {Promise}
+   * @return {Promise}
    */
   exec(command) {
     return new Promise((resolve, reject) => {
       this.connect().then(() => {
-        conn.execCommand(command).then(result => {
+        conn.execCommand(command).then((result) => {
           console.log('STDOUT: ' + result.stdout);
           console.log('STDERR: ' + result.stderr);
           resolve(true);
         });
-      }).catch(err => reject(err));
+      }).catch((err) => reject(err));
     });
   }
 
   /**
    * Ejecuta un commando de consola
    * @param command
-   * @returns {Promise}
+   * @return {Promise}
    */
   shell(command) {
     return new Promise((resolve, reject) => {
@@ -96,7 +97,7 @@ class Zssh {
 
   /**
    * Descarga el directorio remoto en el directorio local
-   * @returns {Promise}
+   * @return {Promise}
    */
   download() {
     return new Promise((resolve, reject) => {
@@ -109,22 +110,22 @@ class Zssh {
               this.shell('cd .temp/tar/ && mv ./* ' + path.resolve(__dirname, '../../../', this.configData.local) + '/');
               this.shell('rm .temp/temp.tar');
               resolve(true);
-            }).catch(err => {
+            }).catch((err) => {
               reject(err);
             });
-          }, err => {
+          }, (err) => {
             reject(err);
           });
-        }).catch(err => {
+        }).catch((err) => {
           reject(err);
         });
-      }).catch(err => reject(err));
+      }).catch((err) => reject(err));
     });
   }
 
   /**
    * Sube al directorio remoto el directorio local
-   * @returns {Promise}
+   * @return {Promise}
    */
   upload() {
     return new Promise((resolve, reject) => {
@@ -134,13 +135,13 @@ class Zssh {
           conn.exec('tar -xvf /tmp/temp.tar -C ' + this.configData.remote + ' && rm /tmp/temp.tar').then(() => {
             this.shell('rm .temp/temp.tar');
             resolve(true);
-          }).catch(err => {
+          }).catch((err) => {
             reject(err);
           });
-        }, err => {
+        }, (err) => {
           reject(err);
         });
-      }).catch(err => reject(err));
+      }).catch((err) => reject(err));
     });
   }
 
@@ -148,13 +149,13 @@ class Zssh {
    * Genera una consulta desde la consola: host | username | password | folder
    */
   prompt(callback) {
-    if(this.configData != {}) {
-      let data = {};
-      this.checkConfig().then(data => {
+    if (this.configData != {}) {
+      const data = {};
+      this.checkConfig().then((data) => {
         data = JSON.parse(data);
         this._prompt(data, callback);
-      }).catch(err => {
-        //console.log(`${err}`.red);
+      }).catch((err) => {
+        // console.log(`${err}`.red);
         this._prompt(data, callback);
       });
     } else {
@@ -171,8 +172,8 @@ class Zssh {
   _prompt(data, callback) {
     prompt.start();
     prompt.get(this._promptCreateSchema(data), (err, result) => {
-      if(Object.keys(result).length) {
-        for(var key in result) {
+      if (Object.keys(result).length) {
+        for (const key in result) {
           data[key] = result[key];
         }
       }
@@ -187,69 +188,70 @@ class Zssh {
   /**
    * Comprueba los parametros introducidos en el fichero de configuración
    * @param data
-   * @returns {object} - Objeto schema para el prompt
+   * @return {object} - Objeto schema para el prompt
    * @private
    */
   _promptCreateSchema(data) {
-    let schema = {
-      properties: {}
+    const schema = {
+      properties: {},
     };
-    if(! data.host) {
+    if (!data.host) {
       schema.properties.host = {
         description: `host`.yellow,
         pattern: /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/,
         message: 'invalid host format',
         default: data.host,
         required: true,
-      }
+      };
     }
-    if(! data.username) {
+    if (!data.username) {
       schema.properties.username = {
         description: `username`.yellow,
         pattern: /^\w+$/,
         message: 'invalid username format',
         default: data.username,
         required: true,
-      }
+      };
     }
-    if(! data.password) {
+    if (!data.password) {
       schema.properties.password = {
         description: `password`.yellow,
         pattern: /^[a-zA-Z0-9]+$/,
         message: 'invalid password format',
         hidden: true,
         required: true,
-      }
+      };
     }
-    if(! data.local) {
+    if (!data.local) {
       schema.properties.local = {
         description: `local folder`.yellow,
         pattern: /^\w+$/,
         message: 'invalid local folder format',
         default: data.local,
         required: true,
-      }
+      };
     }
-    if(! data.remote) {
+    if (!data.remote) {
       schema.properties.remote = {
         description: `remote folder`.yellow,
         pattern: /^\w+$/,
         message: 'invalid remote folder format',
         default: data.remote,
         required: true,
-      }
+      };
     }
     return schema;
   }
 
   /**
    * Comprueba si existe el fichero de configuración
-   * @returns {Promise}
+   * @return {Promise}
    */
   checkConfig() {
     return zfile.read(this.config);
   }
 }
+
 /**
  *
  * @type {ConnectionSSH}

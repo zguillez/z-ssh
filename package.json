@@ -1,6 +1,6 @@
 {
   "name": "z-ssh",
-  "version": "0.1.27",
+  "version": "0.1.28",
   "description": "Tools for ssh connections",
   "keywords": [
     "ssh",
@@ -17,7 +17,6 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf .temp/*",
-    "doc": "rimraf doc/* && esdoc",
     "lint": "eslint index.js src/*.js bin/*.js --fix || true",
     "prepare": "npm run lint && npm run test && sort-package-json &&  bin/prepare.js",
     "test": "jest --coverage",

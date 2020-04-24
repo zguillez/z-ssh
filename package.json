@@ -1,6 +1,6 @@
 {
   "name": "z-ssh",
-  "version": "0.1.23",
+  "version": "0.1.24",
   "description": "Tools for ssh connections",
   "keywords": [
     "ssh",
@@ -20,7 +20,8 @@
     "doc": "rimraf doc/* && esdoc",
     "lint": "eslint index.js src/*.js bin/*.js --fix || true",
     "prepare": "npm run lint && npm run test && bin/prepare.js",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "test_": "bin/test.js"
   },
   "dependencies": {
     "file-type": "14.2.0",

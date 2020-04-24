@@ -1,6 +1,6 @@
 {
   "name": "z-ssh",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "description": "Tools for ssh connections",
   "author": {
     "name": "Guillermo de la Iglesia",
@@ -30,16 +30,16 @@
     "esdoc-node-plugin": "0.2.1",
     "eslint": "6.8.0",
     "eslint-config-google": "0.14.0",
-    "eslint-plugin-html": "6.0.0",
-    "jest": "^25.1.0",
+    "eslint-plugin-html": "6.0.2",
+    "jest": "^25.4.0",
     "minimist": "1.2.5",
     "rimraf": "3.0.2"
   },
   "dependencies": {
-    "file-type": "14.1.4",
+    "file-type": "14.2.0",
     "node-ssh": "8.0.0",
     "prompt": "1.0.0",
-    "replace": "^1.1.5",
+    "replace": "^1.2.0",
     "shelljs": "0.8.3",
     "z-file": "0.5.8"
   },

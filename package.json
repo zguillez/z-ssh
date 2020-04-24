@@ -1,6 +1,6 @@
 {
   "name": "z-ssh",
-  "version": "0.1.25",
+  "version": "0.1.26",
   "description": "Tools for ssh connections",
   "keywords": [
     "ssh",
@@ -19,7 +19,7 @@
     "clean": "rimraf .temp/*",
     "doc": "rimraf doc/* && esdoc",
     "lint": "eslint index.js src/*.js bin/*.js --fix || true",
-    "prepare": "npm run lint && npm run test && bin/prepare.js",
+    "prepare": "npm run lint && npm run test && sort-package-json &&  bin/prepare.js",
     "test": "jest --coverage",
     "test_": "bin/test.js"
   },
@@ -43,6 +43,7 @@
     "eslint-plugin-html": "6.0.2",
     "jest": "^25.4.0",
     "minimist": "1.2.5",
-    "rimraf": "3.0.2"
+    "rimraf": "3.0.2",
+    "sort-package-json": "^1.42.1"
   }
 }

@@ -3,7 +3,8 @@ Nodejs tools for remote ssh connections
 
 ## Install
 ```
-npm i z-ssh
+npm i @zguillez/z-ssh
+yarn add @zguillez/z-ssh
 ```
 # Usage
 ```

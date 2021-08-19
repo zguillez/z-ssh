@@ -1,6 +1,6 @@
 {
   "name": "z-ssh",
-  "version": "0.1.28",
+  "version": "0.1.29",
   "description": "Tools for ssh connections",
   "keywords": [
     "ssh",
@@ -19,27 +19,28 @@
     "clean": "rimraf .temp/*",
     "lint": "eslint index.js src/*.js bin/*.js --fix || true",
     "prepare": "npm run lint && npm run test && sort-package-json &&  bin/prepare.js",
+    "publish": "npm run prepare && npm publish",
     "test": "jest --coverage",
     "test_": "node ./example/index.js"
   },
   "dependencies": {
-    "file-type": "14.2.0",
+    "file-type": "16.5.3",
     "minimist": "^1.2.5",
-    "node-ssh": "8.0.0",
-    "prompt": "1.0.0",
-    "replace": "^1.2.0",
-    "shelljs": "0.8.3",
-    "z-file": "0.5.13"
+    "node-ssh": "12.0.0",
+    "prompt": "1.1.0",
+    "replace": "^1.2.1",
+    "shelljs": "0.8.4",
+    "z-file": "0.5.21"
   },
   "devDependencies": {
     "colors": "1.4.0",
     "copy": "0.3.2",
-    "del": "5.1.0",
-    "eslint": "6.8.0",
+    "del": "6.0.0",
+    "eslint": "7.32.0",
     "eslint-config-google": "0.14.0",
-    "eslint-plugin-html": "6.0.2",
-    "jest": "^25.4.0",
+    "eslint-plugin-html": "6.1.2",
+    "jest": "^27.0.6",
     "rimraf": "3.0.2",
-    "sort-package-json": "^1.42.1"
+    "sort-package-json": "^1.50.0"
   }
 }

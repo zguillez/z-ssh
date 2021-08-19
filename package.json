@@ -1,6 +1,6 @@
 {
   "name": "z-ssh",
-  "version": "0.1.32",
+  "version": "0.1.33",
   "description": "Tools for ssh connections",
   "keywords": [
     "ssh",

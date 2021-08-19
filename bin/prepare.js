@@ -3,9 +3,8 @@
 const colors = require('colors');
 const shell = require('shelljs');
 const zversion = require('z-version');
+const zgit = require('@zguillez/z-git');
 // -----------------------------------
 zversion.update();
-shell.exec(`git add --all`);
-shell.exec(`git commit -m update`);
-shell.exec(`git push origin master`);
+zgit.push('master', 'update');
 console.log(`=> Done!\n`.green);

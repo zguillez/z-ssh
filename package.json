@@ -1,6 +1,6 @@
 {
   "name": "z-ssh",
-  "version": "0.1.39",
+  "version": "0.1.40",
   "description": "Tools for ssh connections",
   "keywords": [
     "ssh",
@@ -21,7 +21,7 @@
     "prepare": "npm run lint && npm run test && sort-package-json &&  bin/prepare.js",
     "test": "jest --coverage",
     "test_": "node ./example/index.js",
-    "version": "zversion"
+    "version": "zversion --version"
   },
   "dependencies": {
     "file-type": "16.5.3",

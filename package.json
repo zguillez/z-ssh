@@ -1,6 +1,6 @@
 {
   "name": "@zguillez/z-ssh",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Tools for ssh connections",
   "keywords": [
     "ssh",
@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@zguillez/z-git": "^0.1.13",
+    "@zguillez/z-version": "^0.2.1",
     "colors": "1.4.0",
     "copy": "0.3.2",
     "del": "6.0.0",
@@ -41,7 +42,6 @@
     "eslint-plugin-html": "6.1.2",
     "jest": "^27.0.6",
     "rimraf": "3.0.2",
-    "sort-package-json": "^1.50.0",
-    "z-version": "^0.1.6"
+    "sort-package-json": "^1.50.0"
   }
 }

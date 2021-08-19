@@ -1,6 +1,6 @@
 {
-  "name": "z-ssh",
-  "version": "0.2.1",
+  "name": "@zguillez/z-ssh",
+  "version": "0.2.2",
   "description": "Tools for ssh connections",
   "keywords": [
     "ssh",
@@ -20,8 +20,7 @@
     "lint": "eslint index.js src/*.js bin/*.js --fix || true",
     "prepare": "npm run lint && npm run test && sort-package-json &&  bin/prepare.js",
     "test": "jest --coverage",
-    "test_": "node ./example/index.js",
-    "version": "zversion --update"
+    "test_": "node ./example/index.js"
   },
   "dependencies": {
     "file-type": "16.5.3",
@@ -33,6 +32,7 @@
     "z-file": "0.5.22"
   },
   "devDependencies": {
+    "@zguillez/z-git": "^0.1.13",
     "colors": "1.4.0",
     "copy": "0.3.2",
     "del": "6.0.0",

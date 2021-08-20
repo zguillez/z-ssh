@@ -1,6 +1,6 @@
 {
   "name": "@zguillez/z-ssh",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "Tools for ssh connections",
   "keywords": [
     "ssh",
@@ -16,14 +16,16 @@
   },
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf .temp/*",
+    "clean": "find ./ -name .DS_Store -exec rm -f {} \\; && npm run clean:tmp",
+    "clean:tmp": "rimraf .temp/*",
     "lint": "eslint index.js src/*.js bin/*.js --fix || true",
-    "prepare": "npm run lint && npm run test && sort-package-json &&  bin/prepare.js",
+    "prepare": "npm run lint && npm run test && sort-package-json && bin/prepare.js",
     "test": "jest --coverage",
-    "test_": "node ./example/index.js"
+    "test_": "node ./example/index.js",
+    "deploy": "npm publish --access=public"
   },
   "dependencies": {
-    "@zguillez/z-file": "0.6.2",
+    "@zguillez/z-file": "0.6.6",
     "file-type": "16.5.3",
     "minimist": "^1.2.5",
     "node-ssh": "12.0.0",
@@ -32,8 +34,9 @@
     "shelljs": "0.8.4"
   },
   "devDependencies": {
-    "@zguillez/z-git": "^0.1.15",
-    "@zguillez/z-version": "^0.2.1",
+    "@zguillez/z-git": "^0.1.18",
+    "@zguillez/z-log": "^0.1.15",
+    "@zguillez/z-version": "^2.0.1",
     "colors": "1.4.0",
     "copy": "0.3.2",
     "del": "6.0.0",

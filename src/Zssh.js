@@ -1,11 +1,10 @@
 'use strict';
-require('colors');
 const path = require('path');
 const prompt = require('prompt');
 const shell = require('shelljs');
-const SSH = require('node-ssh');
 const zfile = require('@zguillez/z-file');
-const conn = new SSH();
+const {NodeSSH} = require('node-ssh');
+const conn = new NodeSSH();
 
 /**
  *

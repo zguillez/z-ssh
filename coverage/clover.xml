@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1629463034660" clover="3.2.0">
-  <project timestamp="1629463034660" name="All files">
+<coverage generated="1629463263491" clover="3.2.0">
+  <project timestamp="1629463263491" name="All files">
     <metrics statements="78" coveredstatements="10" conditionals="14" coveredconditionals="0" methods="41" coveredmethods="2" elements="133" coveredelements="12" complexity="0" loc="78" ncloc="78" packages="1" files="1" classes="1"/>
     <file name="Zssh.js" path="/Users/zguillez/Documentos/Repositorios/_tools/z-ssh/src/Zssh.js">
       <metrics statements="78" coveredstatements="10" conditionals="14" coveredconditionals="0" methods="41" coveredmethods="2"/>

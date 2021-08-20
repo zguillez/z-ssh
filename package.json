@@ -1,6 +1,6 @@
 {
   "name": "@zguillez/z-ssh",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "description": "Tools for ssh connections",
   "keywords": [
     "ssh",

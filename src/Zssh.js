@@ -18,7 +18,7 @@ class Zssh {
     /**
      * Ruta del archivo de configuración
      */
-    this.config = path.resolve(__dirname, './ssh.json');
+    this.config = path.resolve(__dirname, './.zconfig');
     /**
      * Archivo de configuración
      */
@@ -247,7 +247,16 @@ class Zssh {
    * @return {Promise}
    */
   checkConfig() {
-    return zfile.read(this.config);
+    return new Promise((resolve, reject) => {
+      if (zfile.file(this.config)) {
+        zfile.read(this.config).then((data) => {
+          this.configData = JSON.parse(data).ssh;
+          resolve(true);
+        });
+      } else {
+        resolve(false);
+      }
+    });
   }
 }
 

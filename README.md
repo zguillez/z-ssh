@@ -1,18 +1,23 @@
 # z-ssh
+
 Nodejs tools for remote ssh connections
 
 ## Install
+
 ```
 npm i @zguillez/z-ssh
 yarn add @zguillez/z-ssh
 ```
+
 # Usage
+
 ```
 const conn = require('z-ssh');
 ```
 
 ## Configuration file
-By default *./ssh.json* 
+
+By default *./ssh.json*
 
 ```
 conn.config = './config/ssh.json';
@@ -27,14 +32,14 @@ conn.config = './config/ssh.json';
   "remote": "/var/www/vhosts/mydomain.net/httpdocs/myremotefolder"
 }
 ```
-   
+
 If no config file is defined or a params is omitted a prompt will ask for the required param:
 
 ```
 prompt: password:
 ```
 
-## Upload files  
+## Upload files
 
 Upload the local folder to the remote folder:
 
@@ -91,14 +96,23 @@ conn.shell('cd /Users/myusername/Documents/myfolder && tar -cvf backup.tar .').t
 ```
 
 # Contributing and issues
-Contributors are welcome, please fork and send pull requests! If you have any ideas on how to make this project better then please submit an issue or send me an [email](mailto:mail@zguillez.io).
+
+Contributors are welcome, please fork and send pull requests! If you have any ideas on how to make this project better
+then please submit an issue or send me an [email](guillermo@delaiglesia.email).
 
 # License
-©2017 Zguillez.io
 
-Original code licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) Open Source projects used within this project retain their original licenses.
+©2023 Zguillez.IO
+
+Original code licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) Open Source projects used within this
+project retain their original licenses.
 
 # Changelog
 
+### v0.1.32 (February 12, 2023)
+
+* Update dependencies
+
 ### v0.1.0 (January 27, 2017)
+
 * Upload and download methods

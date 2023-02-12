@@ -109,7 +109,7 @@ project retain their original licenses.
 
 # Changelog
 
-### v0.1.32 (February 12, 2023)
+### v0.2.17 (February 12, 2023)
 
 * Update dependencies
 
